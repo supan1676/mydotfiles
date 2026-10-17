@@ -1,0 +1,14 @@
+// ────────────── Output Configuration ──────────────
+// Run `niri msg outputs` to inspect connected displays.
+// The primary internal display is configured in config.kdl as eDP-1.
+//
+// Internal Panel: Chimei Innolux Corporation 0x1521
+// Preferred Mode: 1920x1080@144.003
+// Power-saving alternative mode: 1920x1080@60.004
+//
+// External monitor template (uncomment and adjust as needed when connecting HDMI / USB-C DP):
+/- output "HDMI-A-1" {
+    mode "1920x1080@60.000"
+    scale 1.0
+    position x=1920 y=0
+}
