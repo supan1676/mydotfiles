@@ -1,24 +1,29 @@
-// ── Global Blur Settings ─────────────────────────────────────
-// These affect ALL windows with blur enabled. Adjust to taste!
+// ── Active appearance phase: PERSONAL (Phase 2) ──────────────
+// This file is the live Niri rules file. `toggle-phase.sh` replaces it
+// with either rules-personal.kdl or rules-repo-default.kdl.
+// Global opacity 0.75 | blur passes 2, offset 3.0, noise 0.03,
+// saturation 1.0 | corner radius 20.
+//
+// Niri 26.04 syntax: the top-level `blur` block may appear only once.
+
+// ── Global Blur Settings (Personal Preferences) ──────────────
 blur {
-    passes 6        // Higher = stronger, softer blur (default is 3)
-    offset 4.0      // Pixel offset multiplier; increase for smoother blur (default is 3.0)
-    noise 0.03      // Adds a subtle grain (default is 0.02)
-    saturation 1.2  // Color intensity of the blurred background (default is 1.5)
+    passes 2        // stronger blur with more passes; default is 3
+    offset 3.0      // sample distance per pass
+    noise 0.03      // grain overlay
+    saturation 1.0  // color saturation of the blurred background
 }
 
 // ── Global Window Rules ──────────────────────────────────────
 window-rule {
-    geometry-corner-radius 20 // Set every window radius to 20
+    geometry-corner-radius 20 // Window corner radius: 20
     clip-to-geometry true
     draw-border-with-background false
 }
 
-// Global opacity and blur (applies to all windows unless overridden)
-// Phase 1 (Repository Default): opacity 0.90
-// Phase 2 (Personal Preference): opacity 0.75
+// Global opacity and blur (Phase 2: personal preference, 0.75)
 window-rule {
-    opacity 0.90
+    opacity 0.75
     background-effect {
         blur true
         xray true
@@ -68,8 +73,8 @@ layer-rule {
     }
 }
 
-// ── App Specific Rules ───────────────────────────────────────
-// Firefox (Web Apps)
+// ── App Specific Rules (Personal Preferences) ─────────────────
+// Firefox: opacity 0.75, blur enabled
 window-rule {
     match app-id="firefox"
     opacity 0.75
@@ -79,7 +84,7 @@ window-rule {
     }
 }
 
-// Discord (Added opacity so the blur actually shows!)
+// Discord: opacity 0.73, blur disabled
 window-rule {
     match app-id="discord"
     opacity 0.73
@@ -89,7 +94,7 @@ window-rule {
     }
 }
 
-// Nautilus (Files) - slightly more see-through
+// Nautilus: opacity 0.65, blur enabled
 window-rule {
     match app-id="org.gnome.Nautilus"
     opacity 0.65
@@ -99,11 +104,9 @@ window-rule {
     }
 }
 
-// ── Exceptions (keep these LAST so they override the global rule) ──
-// Video players stay fully opaque
+// ── Exceptions (mpv and VLC opacity: 1.0) ────────────────────
 window-rule {
     match app-id="mpv"
     match app-id="vlc"
     opacity 1.0
 }
-

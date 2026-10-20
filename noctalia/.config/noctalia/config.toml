@@ -5,8 +5,8 @@
 # ─────────────────────────────────────────────────────────────
 [lockscreen]
 enabled = true
-blur_intensity = 0.5        # Background blur (0.0 - 1.0)
-tint_intensity = 0.3        # Dark tint over blur (0.0 - 1.0)
+blur_intensity = 0.80       # Background blur (0.0 - 1.0) - initial visual test value
+tint_intensity = 0.45       # Dark tint over blur (0.0 - 1.0) - initial visual test value
 allow_empty_password = false
 lock_before_suspend = true
 
@@ -64,6 +64,19 @@ show_session_buttons = false
 show_media = false
 show_weather = false
 show_unlock_hint = true
+
+# ─────────────────────────────────────────────────────────────
+#  Theme and Wallpaper
+# ─────────────────────────────────────────────────────────────
+# These are the declarative defaults. If you change the wallpaper or
+# color scheme in the Noctalia GUI, Noctalia writes the same keys to
+# ~/.local/state/noctalia/settings.toml, which wins over this file.
+[theme]
+source = "wallpaper"
+wallpaper_scheme = "m3-content"
+
+[wallpaper.default]
+path = "~/Pictures/Wallpapers/niri-noctalia-dots/city-girl-sunset.png"
 
 [shell.screenshot]
 directory = "~/Pictures/Screenshots"
